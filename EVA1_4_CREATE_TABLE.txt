@@ -1,0 +1,181 @@
+MySQL Shell 8.0.41
+
+Copyright (c) 2016, 2025, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \c --mc root@localhost;
+Creating a Classic session to 'root@localhost;'
+Please provide the password for 'root@localhost;': *********
+MySQL Error 2005 (HY000): Unknown MySQL server host 'localhost;' (11001)
+ MySQL  SQL > \c --mc root@localhost;
+Creating a Classic session to 'root@localhost;'
+Please provide the password for 'root@localhost;': **********
+MySQL Error 2005 (HY000): Unknown MySQL server host 'localhost;' (11001)
+ MySQL  SQL > \c --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 8
+Server version: 8.0.41 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > show databases
+                               -> ,
+                               -> ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',' at line 2
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| tdb_eva1           |
+| world              |
++--------------------+
+7 rows in set (0.0111 sec)
+ MySQL  localhost:3306 ssl  SQL > use tdb_eva1;
+Default schema set to `tdb_eva1`.
+Fetching global names, object names from `tdb_eva1` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > create table vehiculo(
+                                         -> marca varchar(20),
+                                         -> modelo varchar(30,
+                                         -> year smallint,^C
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > create table vehiculo(
+                                         -> maraca vrchar(20),
+                                         -> modelo varchar(30),
+                                         -> year smallint,
+                                         -> color varchar(20),
+                                         -> no_serie varhcar(17));
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'vrchar(20),
+modelo varchar(30),
+year smallint,
+color varchar(20),
+no_serie varhc' at line 2
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > create table vehiculo( maraca varchar(20), modelo varchar(30), year smallint, color varchar(20), no_serie varhcar(17));
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varhcar(17))' at line 1
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > create table vehiculo(marca vrchar(20),modelo varchar(30),year smallint, color varchar(20), no_serie varhcar(17));
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'vrchar(20),modelo varchar(30),year smallint, color varchar(20), no_serie varhcar' at line 1
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > create table vehiculo(marca varchar(20),modelo varchar(30),year smallint,color varchar(20),no_serie varhcar(17));
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varhcar(17))' at line 1
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > show tables:
+                                         -> ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':' at line 1
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > show tables;
++--------------------+
+| Tables_in_tdb_eva1 |
++--------------------+
+| persona            |
++--------------------+
+1 row in set (0.0024 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > create table vehiculo(marca varchar(20),modelo varchar(30),year smallint,color varchar(20),no_serie varhcar(17));
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varhcar(17))' at line 1
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > create table vehiculo(marca varchar(20),modelo varchar(30),year smallint,color varchar(20),no_serie varchar(17));
+Query OK, 0 rows affected (0.0861 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > show tables;
++--------------------+
+| Tables_in_tdb_eva1 |
++--------------------+
+| persona            |
+| vehiculo           |
++--------------------+
+2 rows in set (0.0039 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > desc vehiculo
+                                         -> ;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| marca    | varchar(20) | YES  |     | NULL    |       |
+| modelo   | varchar(30) | YES  |     | NULL    |       |
+| year     | smallint    | YES  |     | NULL    |       |
+| color    | varchar(20) | YES  |     | NULL    |       |
+| no_serie | varchar(17) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.0058 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > insert into vehiculo
+                                         -> value("ford","mustang",1970,"gris","asdfgghhdfsg");
+Query OK, 1 row affected (0.0228 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > desc vehiculo;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| marca    | varchar(20) | YES  |     | NULL    |       |
+| modelo   | varchar(30) | YES  |     | NULL    |       |
+| year     | smallint    | YES  |     | NULL    |       |
+| color    | varchar(20) | YES  |     | NULL    |       |
+| no_serie | varchar(17) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.0042 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > insert into vehiculo(marca, modelo) value("chevrolet","corvet")
+                                         -> ;
+Query OK, 1 row affected (0.0066 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > insert into vehiculo(marca, modelo) value("tesla","y"),("tesla","s"),("tesla","x"),("tesla","y"),("tesla","Cybertruck");
+Query OK, 5 rows affected (0.0158 sec)
+
+Records: 5  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > select * frome vehiculos;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'frome vehiculos' at line 1
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > select * frome vehiculo;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'frome vehiculo' at line 1
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > select * from vehiculo;
++-----------+------------+------+-------+--------------+
+| marca     | modelo     | year | color | no_serie     |
++-----------+------------+------+-------+--------------+
+| ford      | mustang    | 1970 | gris  | asdfgghhdfsg |
+| chevrolet | corvet     | NULL | NULL  | NULL         |
+| tesla     | y          | NULL | NULL  | NULL         |
+| tesla     | s          | NULL | NULL  | NULL         |
+| tesla     | x          | NULL | NULL  | NULL         |
+| tesla     | y          | NULL | NULL  | NULL         |
+| tesla     | Cybertruck | NULL | NULL  | NULL         |
++-----------+------------+------+-------+--------------+
+7 rows in set (0.0014 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > insert into vehiculo(marca, modelo) value("tesla","s");
+Query OK, 1 row affected (0.0065 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > select * from vehiculo;
++-----------+------------+------+-------+--------------+
+| marca     | modelo     | year | color | no_serie     |
++-----------+------------+------+-------+--------------+
+| ford      | mustang    | 1970 | gris  | asdfgghhdfsg |
+| chevrolet | corvet     | NULL | NULL  | NULL         |
+| tesla     | y          | NULL | NULL  | NULL         |
+| tesla     | s          | NULL | NULL  | NULL         |
+| tesla     | x          | NULL | NULL  | NULL         |
+| tesla     | y          | NULL | NULL  | NULL         |
+| tesla     | Cybertruck | NULL | NULL  | NULL         |
+| tesla     | s          | NULL | NULL  | NULL         |
++-----------+------------+------+-------+--------------+
+8 rows in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > select cont(*) form vehiculo;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) form vehiculo' at line 1
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > select cont(*) from vehiculo;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) from vehiculo' at line 1
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > crate tables prueba(
+                                         -> dato varchar(20) not null);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'crate tables prueba(
+dato varchar(20) not null)' at line 1
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > crate tables prueba
+                                         -> ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'crate tables prueba' at line 1
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > crate table prueba( ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'crate table prueba(' at line 1
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > crate table prueba(dato varchar(20) not null) ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'crate table prueba(dato varchar(20) not null)' at line 1
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > create table prueba(dato varchar(20) not null) ;
+Query OK, 0 rows affected (0.0313 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > insert into prueba value("hola");
+Query OK, 1 row affected (0.0168 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > select * from prueba;
++------+
+| dato |
++------+
+| hola |
++------+
+1 row in set (0.0015 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > insert into prueba value(null);
+ERROR: 1048 (23000): Column 'dato' cannot be null
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL >
