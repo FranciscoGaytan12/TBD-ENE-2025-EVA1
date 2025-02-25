@@ -1,0 +1,54 @@
+MySQL Shell 8.0.41
+
+Copyright (c) 2016, 2025, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \c --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 9
+Server version: 8.0.41 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > use tdb_eva1;
+Default schema set to `tdb_eva1`.
+Fetching global names, object names from `tdb_eva1` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > create table orders(order_id int, order_date date, cust_ID);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > create table orders(order_id int, order_date date, cust_ID int);
+Query OK, 0 rows affected (0.0566 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > insert into orders(order_id, order_data, cust_ID) value(1006 ,"2004-10-24",2),(1007 ,"2004-10-25",6),(1008 ,"2004-01-11",2);
+ERROR: 1054 (42S22): Unknown column 'order_data' in 'field list'
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > insert into orders(order_id, order_date, cust_ID) value(1006 ,"2004-10-24",2),(1007 ,"2004-10-25",6),(1008 ,"2004-01-11",2);
+Query OK, 3 rows affected (0.0139 sec)
+
+Records: 3  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > create table customers(cust int, order_date date, cust_ID);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > create table customers(cust_name varchar(50), cust_Address varchar(50), cust_ID int);
+Query OK, 0 rows affected (0.0538 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > insert into customers(cust_name, cust_Address, cust_ID) value("value, furniture","plano, tx", 2),(" furniture valler ","plano, tx", 2);
+Query OK, 2 rows affected (0.0178 sec)
+
+Records: 2  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > select * from orders;
++----------+------------+---------+
+| order_id | order_date | cust_ID |
++----------+------------+---------+
+|     1006 | 2004-10-24 |       2 |
+|     1007 | 2004-10-25 |       6 |
+|     1008 | 2004-01-11 |       2 |
++----------+------------+---------+
+3 rows in set (0.0013 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL > select * from customers;
++--------------------+--------------+---------+
+| cust_name          | cust_Address | cust_ID |
++--------------------+--------------+---------+
+| value, furniture   | plano, tx    |       2 |
+|  furniture valler  | plano, tx    |       2 |
++--------------------+--------------+---------+
+2 rows in set (0.0013 sec)
+ MySQL  localhost:3306 ssl  tdb_eva1  SQL >
